@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+/* Bo Tua Bo Soi Screen*/
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    margin: 0px;
+    --padding-normal: 20px;
+    --color-footer: #9FA09F;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight:400;  
+}
+
+header {
+    height: 100vh;
+}
+
+#content {
+    height: 100vh;
+    color: white;
+    background: #70C1B3;
+}
+
+footer {
+    color: var(--color-footer);
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 40px;
+}
+
+.bearcats {
+    display: flex;
+    flex-direction: column;
+    padding: var(--padding-normal) 0px;
+}
+
+.mtc{
+    display: flex;
+    flex-direction: column;
+    padding: var(--padding-normal) 0px;
+}
+
+.bold {
+    font-weight: bold !important; 
+}
+
+
+.logo-mtc {
+    width: 150px;
+}
+
+.logo-bearcats {
+    width: 140px;
+    fill: var(--color-footer);
+}
+
+.logo-mat-io {
+    width: 100px;
+}
+
+.button {
+    background: #F25F5C;
+    color: white;
+    border-radius: 100px;
+    padding: 10px;
+}
+
+/* Soi Liap Screen */
+@media (max-width: 736px){
+    header {
+        flex-direction: column;
+    }
+
+    footer {
+        flex-direction: column-reverse;
+    }
+    
+    .mtc {
+        align-items: center;
+    }
+
+    .bearcats{
+        align-items: center;
+    }
+
+    .io-big{
+        width: 50vw;
+    }
+}
+
+/* Tua Liap Screen */
+@media (min-width: 737px){ 
+    footer {
+        flex-direction: row;
+    }
+
+    .io-big {
+        width: 400px;
+    }
+}
