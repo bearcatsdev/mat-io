@@ -2,7 +2,7 @@ let includeDiv = $("#content-replace");
 let pathName = window.location.pathname;
 
 $(window).scroll(function() {
-    if ($(window).scrollTop() > 60) {
+    if ($(window).scrollTop() > 10) {
         $('#navBar').addClass('floatingNav');
     } else {
         $('#navBar').removeClass('floatingNav');
