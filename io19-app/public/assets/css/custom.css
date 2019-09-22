@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,700,700i,900,900i&display=swap');
+@import url('https://cdn.materialdesignicons.com/4.4.95/css/materialdesignicons.min.css');
+
+body {
+    --padding-normal: 40px;
+    --black: #50514F;
+    --black-light: #9FA09F;
+    --button: #F25F5C;
+    --disabled-text: #7F807F;
+    color: #50514F;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight:400;
+}
+
+.subheader {
+    font-size: 20px;
+}
+
+#inner_subheader_text {
+    color: #247BA0;
+    font-weight: 700 !important;
+}
+
+#invited-text {
+    color: #DC5754;
+}
+
+#subtitle {
+    font-size: 28px;
+    color: #7F807F;
+}
+
+.btn {
+    border-radius: 100px;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 10px 40px;
+}
+
+.btn-primary{
+    color:#fff;
+    background-color: #F25F5C;
+    border-color: #F25F5C;
+}
+.btn-primary:hover{
+    color:#fff;
+    background-color:#DC5754;
+    border-color:#DC5754;
+}
+.btn-primary.focus,.btn-primary:focus{
+    box-shadow:0 0 0 .2rem rgba(225,83,97,.5)
+}
+.btn-primary.disabled,.btn-primary:disabled{
+    color:#fff;
+    background-color:#F25F5C;
+    border-color:#F25F5C;
+}
+.btn-primary:not(:disabled):not(.disabled).active,.btn-primary:not(:disabled):not(.disabled):active,.show>.btn-primary.dropdown-toggle{
+    color:#fff;
+    background-color:#F25F5C;
+    border-color:#F25F5C;
+}
+.btn-primary:not(:disabled):not(.disabled).active:focus,.btn-primary:not(:disabled):not(.disabled):active:focus,.show>.btn-primary.dropdown-toggle:focus{
+    box-shadow:0 0 0 .2rem rgba(225,83,97,.5)
+}
+
+.navbar {
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: #ffffff;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    padding-top: 65px;
+}
+
+.active {
+    font-weight: bold;
+}
+
+.bold {
+    font-weight: bold !important;
+}
+
+footer {
+    background-color: #F9F9F9;
+    font-size: 14px;
+    color: var(--black-light);
+    padding: var(--padding-normal);
+}
+
+.logo-mtc {
+    width: 150px;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    padding-bottom: 1em;
+}
+
+.logo-bearcats {
+    width: 140px;
+    fill: var(--black-light);
+    padding-top: 1em;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.io-big {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.bearcats {
+    float:right!important;
+}
+
+.mtc {
+    float:left!important;
+}
+
+@media (max-width: 736px){
+    body {
+        text-align: center;
+    }
+
+    footer {
+        text-align: center;
+    }
+
+    .row-footer {
+        flex-direction: column-reverse;
+    }
+
+    .bearcats {
+        margin-bottom: var(--padding-normal);
+        float: none !important;
+    }
+
+    .mtc {
+        float: none !important;
+    }
+
+    .io-big {
+        width: 50vw;
+        align-content: center;
+    }
+}
+
+.mdi::before {
+    font-size: 24px;
+    line-height: 14px;
+}
+.btn .mdi::before {
+    position: relative;
+    top: 4px;
+}
+.btn-xs .mdi::before {
+    font-size: 18px;
+    top: 3px;
+}
+.btn-sm .mdi::before {
+    font-size: 18px;
+    top: 3px;
+}
+.dropdown-menu .mdi {
+    width: 18px;
+}
+.dropdown-menu .mdi::before {
+    position: relative;
+    top: 4px;
+    left: -8px;
+}
+.nav .mdi::before {
+    position: relative;
+    top: 4px;
+}
+.navbar .navbar-toggle .mdi::before {
+    position: relative;
+    top: 4px;
+    color: #FFF;
+}
+.breadcrumb .mdi::before {
+    position: relative;
+    top: 4px;
+}
+.breadcrumb a:hover {
+    text-decoration: none;
+}
+.breadcrumb a:hover span {
+    text-decoration: underline;
+}
+.alert .mdi::before {
+    position: relative;
+    top: 4px;
+    margin-right: 2px;
+}
+.input-group-addon .mdi::before {
+    position: relative;
+    top: 3px;
+}
+.navbar-brand .mdi::before {
+    position: relative;
+    top: 2px;
+    margin-right: 2px;
+}
+.list-group-item .mdi::before {
+    position: relative;
+    top: 3px;
+    left: -3px
+}
