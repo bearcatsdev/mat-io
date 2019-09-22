@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+/* Bo Tua Bo Soi Screen*/
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    margin: 0px;
+    --padding-normal: 40px;
+    --black: #50514F;
+    --black-light: #9FA09F;
+    --button: #F25F5C;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight:400;  
+}
+
+.circle {
+    background-color: var(--black);
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+}
+
+/* nav */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px var(--padding-normal);
+}
+
+.nav-logo {
+    width: 125px;
+    object-fit: contain;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.nav-items{
+    padding: 1em;
+}
+
+.current {
+   color: #70C1B3 !important;
+   font-weight: bold;
+}
+
+.nav-item {
+    color: var(--black);
+    text-decoration: none;
+    padding: 1em;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    font-size:  18px;
+}
+
+/* header */
+header {
+    height: 100vh;
+}
+
+.header-content{
+    padding: 0 var(--padding-normal);
+    display: flex;
+}
+
+#content {
+    padding: 0 var(--padding-normal);
+    height: 100vh;
+    color: white;
+    background: #70C1B3;
+}
+
+/* footer */
+footer {
+    color: var(--black-light);
+    display: flex;
+    justify-content: space-between;
+    padding: 0px var(--padding-normal);
+}
+
+.mtc{
+    display: flex;
+    flex-direction: column;
+    padding: var(--padding-normal) 0px;
+}
+
+.logo-mtc {
+    width: 150px;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    padding-bottom: 1em;
+}
+
+.bearcats {
+    display: flex;
+    flex-direction: column;
+    padding: var(--padding-normal) 0px;
+}
+
+.logo-bearcats {
+    width: 140px;
+    fill: var(--black-light);
+    padding-top: 1em;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+
+.bold {
+    font-weight: bold !important; 
+}
+
+.button {
+    background: var(--button);
+    color: white;
+    border-radius: 100px;
+    padding: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.button:hover {
+    background: #DC5754;
+}
+
+.io-big {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Soi Liap Screen */
+@media (max-width: 736px){
+    nav {
+        display: flex;
+        justify-content: center;
+        padding: 2em;
+    }
+
+    .nav-items {
+        position: absolute;
+        top: -100px;
+    }
+
+    header {
+        flex-direction: column;
+    }
+
+    footer {
+        flex-direction: column-reverse;
+    }
+    
+    .mtc {
+        align-items: center;
+    }
+
+    .bearcats {
+        align-items: center;
+    }
+
+    .io-big {
+        width: 50vw;
+    }
+    
+    .header-content {
+        flex-direction: column;
+    }
+}
+
+/* Tua Liap Screen */
+@media (min-width: 737px){ 
+    /* nav */
+    .nav-items {
+        display: flex;
+        list-style-type: none;
+    }
+
+    footer {
+        flex-direction: row;
+    }
+
+    .io-big {
+        width: 400px;
+    }
+}
