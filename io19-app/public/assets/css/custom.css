@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #subtitle {
-    font-size: 28px;
+    font-size: 24px;
     color: #7F807F;
 }
 
@@ -162,6 +162,10 @@ footer {
     .io-big {
         width: 50vw;
         align-content: center;
+    }
+    
+    #subtitle {
+        font-size: 20px;
     }
 }
 
