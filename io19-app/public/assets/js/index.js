@@ -1,6 +1,13 @@
 let includeDiv = $("#content-replace");
 let pathName = window.location.pathname;
 
+// Loading spinner
+// Wait for window load
+$(window).on('load', function(){
+    // Animate loader off screen
+    $(".se-pre-con").fadeOut("slow");;
+});
+
 $(window).scroll(function() {
     if ($(window).scrollTop() > 10) {
         $('#navBar').addClass('floatingNav');
