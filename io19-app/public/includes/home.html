@@ -20,14 +20,14 @@
                 '                <p><h3 class="subheader">Hey, <span id="inner_subheader_text"></h3></p>\n' +
                 '                <p><h1>You’re <strong class="bold" id="invited-text">invited</strong> to</h1>\n' +
                 '                <h2 id="subtitle">Binusian 2023 Welcoming Party</h2></p>\n' +
-                '                <section style="display: flex; flex-direction: column">\n' +
-                '                    <div style="display: flex; flex-direction: row; align-items: center">\n' +
+                '                <section class="flex-container">\n' +
+                '                    <div class="schedule-container">\n' +
                 '                        <i class="mdi mdi-clock-outline" aria-hidden="true"></i>\n' +
-                '                        <span style="margin-left: 16px;">Hello<br>mai pren</span>\n' +
+                '                        <h5 style="margin-left: 24px;">October 4th, 2019<br>2.45pm - finish</h5>\n' +
                 '                    </div>\n' +
-                '                    <div style="display: flex; flex-direction: row; align-items: center; margin-top: 8px;">\n' +
-                '                        <i class="mdi mdi-clock-outline" aria-hidden="true"></i>\n' +
-                '                        <span style="margin-left: 16px;">Hello<br>mai pren</span>\n' +
+                '                    <div class="schedule-container" style="margin-top: 8px;">\n' +
+                '                        <i class="mdi mdi-map-marker-outline" aria-hidden="true"></i>\n' +
+                '                        <h5 style="margin-left: 24px;">BINUS University<br>Kijang Campus Hall</h5>\n' +
                 '                    </div>\n' +
                 '                </section>\n' +
                 '\n' +
@@ -39,9 +39,10 @@
                 '            <p>\n' +
                 '                <img src="assets/img/logo_io.svg" alt="I/O Big" class="img-fluid">\n' +
                 '            </p>\n' +
-                '        </div>\n'
+                '        </div>\n' +
+                ''
         } else {
-            document.getElementById("home-row").innerHTML = '          <div class="col-sm">\n' +
+            document.getElementById("home-row").innerHTML = '          <div style="no-padding" \n' +
                 '            <div>\n' +
                 '                <p><h3 class="subheader">Hey, <span id="inner_subheader_text"></h3></p>\n' +
                 '                <p><h1>You’re <strong class="bold" id="invited-text">invited</strong> to</h1>\n' +
@@ -51,14 +52,14 @@
                 '                        <img src="assets/img/logo_io.svg" alt="I/O Big" class="img-fluid">\n' +
                 '                    </p>\n' +
                 '                </div>\n' +
-                '                <section style="display: flex; flex-direction: column">\n' +
-                '                    <div style="display: flex; flex-direction: row; align-items: center">\n' +
+                '                <section class="flex-container-row">\n' +
+                '                    <div class="schedule-container-column">\n' +
                 '                        <i class="mdi mdi-clock-outline" aria-hidden="true"></i>\n' +
-                '                        <span style="margin-left: 16px;">Hello<br>mai pren</span>\n' +
+                '                        <small>October 4th, 2019<br>2.45pm - finish</small>' +
                 '                    </div>\n' +
-                '                    <div style="display: flex; flex-direction: row; align-items: center; margin-top: 8px;">\n' +
+                '                    <div class="schedule-container-column">\n' +
                 '                        <i class="mdi mdi-clock-outline" aria-hidden="true"></i>\n' +
-                '                        <span style="margin-left: 16px;">Hello<br>mai pren</span>\n' +
+                '                        <small>BINUS University<br>Kijang Campus Hall</small>' +
                 '                    </div>\n' +
                 '                </section>\n' +
                 '\n' +

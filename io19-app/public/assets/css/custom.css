@@ -16,6 +16,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .subheader {
     font-size: 20px;
+    color: #247BA0;
 }
 
 #inner_subheader_text {
@@ -229,4 +230,36 @@ footer {
 
 .active {
     color: #70C1B3 !important;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    margin-bottom: 36px;
+}
+
+.schedule-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.flex-container-row {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 24px;
+    margin-bottom: 36px;
+}
+
+.schedule-container-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.no-padding {
+    padding: 0;
 }
