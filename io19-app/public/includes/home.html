@@ -1,11 +1,75 @@
 <div class="container-fluid">
     <div id="home-row" class="row home-row"></div>
     <div class="down-arrow">
-        <a class="down-arrow-clickable" href="#footer">
+        <a class="down-arrow-clickable" href="#about">
             <i data-feather="chevron-down"></i>
         </a>
     </div>
     <div class="icon-divider"></div>
+</div>
+
+<!-- About MAT I/O -->
+<a name="about"></a>
+<div class="container-fluid home-content" id="about-mat-io">
+    <div class="row">
+        <div class="col-sm">
+            <img src="/assets/img/about-mat-io.jpg" class="img-fluid main-image">
+        </div>
+        <div class="col-sm">
+            <p>
+                <span class="bold">About MAT I/O</strong>
+                    <h2>Our yearly welcoming party for MAT students.</h2>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem eius suscipit accusantium
+                    distinctio? Ex illo adipisci quis, ea qui laborum ullam dolorum minus in saepe obcaecati recusandae
+                    sint ratione ducimus.
+            </p>
+            <p style="padding-top: 40px">
+                <a class="btn btn-primary" href="#">Read more</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- MAT Ideathon -->
+<div class="container-fluid home-content" id="about-mat-ideathon">
+    <div class="row" id="about-ideathon-row">
+        <div class="col-sm">
+            <p>
+                <span class="bold">MAT Ideathon</strong>
+                    <h2>A competition for new MAT intakes to show their ideas.</h2>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem eius suscipit accusantium
+                    distinctio? Ex illo adipisci quis, ea qui laborum ullam dolorum minus in saepe obcaecati recusandae
+                    sint ratione ducimus.
+            </p>
+            <p style="padding-top: 40px">
+                <a class="btn btn-primary" href="#">Read more</a>
+            </p>
+        </div>
+        <div class="col-sm">
+            <img src="/assets/img/mat-ideathon-1.jpg" class="img-fluid main-image">
+        </div>
+    </div>
+</div>
+
+<!-- About MTC -->
+<div class="container-fluid home-content" id="about-mtc">
+    <div class="row">
+        <div class="col-sm">
+            <img src="/assets/img/about-mtc.jpg" class="img-fluid main-image">
+        </div>
+        <div class="col-sm">
+            <p>
+                <span class="bold">Mobile Tech Community</strong>
+                    <h2>A community where you can feel like home.</h2>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem eius suscipit accusantium
+                    distinctio? Ex illo adipisci quis, ea qui laborum ullam dolorum minus in saepe obcaecati recusandae
+                    sint ratione ducimus.
+            </p>
+            <p style="padding-top: 40px">
+                <a class="btn btn-primary" href="#">Read more</a>
+            </p>
+        </div>
+    </div>
 </div>
 
 <style>
@@ -15,15 +79,23 @@
         height: 60px;
         animation: down-anim 2s infinite;
     }
-    
+
     .down-arrow-clickable {
         color: #50514F;
     }
 
     @keyframes down-anim {
-        0%  {padding-top:0px;}
-        25% {padding-top:5px;}
-        100% {padding-top:10px;}            
+        0% {
+            padding-top: 0px;
+        }
+
+        25% {
+            padding-top: 5px;
+        }
+
+        100% {
+            padding-top: 10px;
+        }
     }
 
     .home-row {
@@ -31,20 +103,20 @@
         margin: 0px;
     }
 
-    .feather{
+    .feather {
         align-self: center;
         stroke-width: 1px;
     }
-    
+
     @media (max-width: 736px) {
-        .feather{
+        .feather {
             width: 24px;
             height: 24px;
         }
     }
 
     @media (min-width: 737px) {
-        .feather{
+        .feather {
             width: 32px;
             height: 32px;
         }
@@ -62,6 +134,9 @@
 <script>
     function myFunction(x) {
         if (x.matches) { // If media query matches
+            // Undo reverse column for mobile
+            let rowAboutIdeathon = $('#about-ideathon-row');
+            rowAboutIdeathon.removeClass('flex-column-reverse');
             document.getElementById("home-row").innerHTML = '<div class="col-sm">\n' +
                 '            <div>\n' +
                 '                <p><h3 class="subheader">Hey, <span id="inner_subheader_text"></h3></p>\n' +
@@ -89,6 +164,10 @@
                 '        </div>\n' +
                 ''
         } else {
+            // Reverse column for mobile
+            let rowAboutIdeathon = $('#about-ideathon-row');
+            rowAboutIdeathon.addClass('flex-column-reverse');
+
             document.getElementById("home-row").innerHTML = '          <div style="no-padding" \n' +
                 '            <div>\n' +
                 '                <p><h3 class="subheader">Hey, <span id="inner_subheader_text"></h3></p>\n' +
