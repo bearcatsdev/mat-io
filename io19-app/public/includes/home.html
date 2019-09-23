@@ -1,16 +1,36 @@
 <div class="container-fluid">
-    <div id="home-row" class="row home-row">
-
-
+    <div id="home-row" class="row home-row"></div>
+    <div class="down-arrow">
+        <a class="down-arrow-clickable" href="#footer">
+            <i data-feather="chevron-down"></i>
+        </a>
     </div>
+    <div class="icon-divider"></div>
 </div>
 
 <style>
+    .down-arrow {
+        margin-top: -15px;
+        text-align: center;
+        height: 40px;
+        animation: down-anim 2s infinite;
+    }
+    
+    .down-arrow-clickable {
+        color: #50514F;
+    }
+
+    @keyframes down-anim {
+        0%  {padding-top:0px;}
+        25% {padding-top:5px;}
+        100% {padding-top:10px;}            
+    }
+
     .home-row {
         padding: 40px;
         margin: 0px;
     }
-    
+
     .feather{
         align-self: center;
         stroke-width: 1px;
@@ -46,11 +66,11 @@
                 '                <section class="flex-container">\n' +
                 '                    <div class="schedule-container">\n' +
                 '                        <i data-feather="clock"></i>\n' +
-                '                        <h5 style="margin-left: 24px;">October 4th, 2019<br>2.45pm - finish</h5>\n' +
+                '                        <h5 style="margin-left: 24px; margin-bottom: 0px;">October 4th, 2019<br>2.45pm - finish</h5>\n' +
                 '                    </div>\n' +
-                '                    <div class="schedule-container" style="margin-top: 8px;">\n' +
+                '                    <div class="schedule-container" style="margin-top: 16px;">\n' +
                 '                        <i data-feather="map-pin"></i>\n' +
-                '                        <h5 style="margin-left: 24px;">BINUS University<br>Kijang Campus Hall</h5>\n' +
+                '                        <h5 style="margin-left: 24px; margin-bottom: 0px;">BINUS University<br>Kijang Campus Hall</h5>\n' +
                 '                    </div>\n' +
                 '                </section>\n' +
                 '\n' +
