@@ -10,6 +10,29 @@
         padding: 40px;
         margin: 0px;
     }
+    
+    .feather{
+        align-self: center;
+        stroke-width: 1px;
+    }
+    
+    @media (max-width: 736px) {
+        .feather{
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    @media (min-width: 737px) {
+        .feather{
+            width: 32px;
+            height: 32px;
+        }
+    }
+
+    .icon-divider {
+        height: 8px;
+    }
 </style>
 
 <script>
@@ -22,11 +45,11 @@
                 '                <h2 id="subtitle">Mobile Application and Technology<br>Binusian 2023 Welcoming Party</h2></p>\n' +
                 '                <section class="flex-container">\n' +
                 '                    <div class="schedule-container">\n' +
-                '                        <i class="mdi mdi-clock-outline" aria-hidden="true"></i>\n' +
+                '                        <i data-feather="clock"></i>\n' +
                 '                        <h5 style="margin-left: 24px;">October 4th, 2019<br>2.45pm - finish</h5>\n' +
                 '                    </div>\n' +
                 '                    <div class="schedule-container" style="margin-top: 8px;">\n' +
-                '                        <i class="mdi mdi-map-marker-outline" aria-hidden="true"></i>\n' +
+                '                        <i data-feather="map-pin"></i>\n' +
                 '                        <h5 style="margin-left: 24px;">BINUS University<br>Kijang Campus Hall</h5>\n' +
                 '                    </div>\n' +
                 '                </section>\n' +
@@ -54,11 +77,13 @@
                 '                </div>\n' +
                 '                <section class="flex-container-row">\n' +
                 '                    <div class="schedule-container-column">\n' +
-                '                        <i class="mdi mdi-clock-outline" aria-hidden="true"></i>\n' +
+                '                       <i data-feather="clock"></i>\n' +
+                '                       <div class="icon-divider"></div>' +
                 '                        <small>October 4th, 2019<br>2.45pm - finish</small>' +
                 '                    </div>\n' +
                 '                    <div class="schedule-container-column">\n' +
-                '                        <i class="mdi mdi-map-marker-outline" aria-hidden="true"></i>\n' +
+                '                        <i data-feather="map-pin"></i>\n' +
+                '                        <div class="icon-divider"></div>' +
                 '                        <small>BINUS University<br>Kijang Campus Hall</small>' +
                 '                    </div>\n' +
                 '                </section>\n' +
@@ -80,11 +105,10 @@
         };
 
         let typed = new Typed('#inner_subheader_text', options);
+        feather.replace();
     }
 
     let x = window.matchMedia("(min-width: 737px)");
     myFunction(x);
     x.addListener(myFunction);
-
-
 </script>

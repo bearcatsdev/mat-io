@@ -149,6 +149,11 @@ footer {
     -ms-user-select: none;
 }
 
+.feather{
+    width: 48px;
+    height: 48px;
+}
+
 /* Soi Liap Screen */
 @media (max-width: 736px){
     nav {
