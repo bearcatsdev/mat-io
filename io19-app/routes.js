@@ -1,7 +1,7 @@
 const API_PREFIX = "/api/v1";
 const api = require('./api');
 
-module.exports = (app) => {
+module.exports = (app, apiUrl) => {
   app.get('/', (req, res) => {
       res.sendFile(__dirname + '/public/index.html');
   });
@@ -15,6 +15,8 @@ module.exports = (app) => {
   });
 
   //app.route(API_PREFIX + '/reservation').post(api.newReservation);
+
+  app.route(apiUrl + '/email').get(api.email);
 
   // page not found
   app.get('*', function(req, res){
