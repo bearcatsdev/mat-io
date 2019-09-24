@@ -1,0 +1,131 @@
+<div class="container">
+    <div class="row home-row">
+        <div class="col-sm">
+            <p>
+                <h1>Schedule</h1>
+                The schedule can be updated up until the event, so check back often to get the latest schedule.
+            </p>
+            <div class="schedule">
+                <table>
+                    <tr>
+                        <th>15:00</th>
+                        <td colspan="4" rowspan="2" class="color-blue">Registrasi</td>
+                    </tr>
+                    <tr>
+                        <th>15:30</th>
+                    </tr>
+                    <tr>
+                        <th>16:00</th>
+                        <td colspan="4" rowspan="2" class="color-orange">Sambutan Jurusan, Alumni dan Doa</td>
+                    </tr>
+                    <tr>
+                        <th>16:30</th>
+                    </tr>
+                    <tr>
+                        <th>17:00</th>
+                        <td colspan="4" class="color-orange">Mobile Tech Community <span>oleh Sugiharso</span></td>
+                    </tr>
+                    <tr>
+                        <th>17:30</th>
+                        <td colspan="4" rowspan="2" class="color-orange">Presentasi <span>dari para finalis Ideathon 2019</span></td>
+                    </tr>
+                    <tr>
+                        <th>18:00</th>
+                    </tr>
+                    <tr>
+                        <th>18:30</th>
+                        <td colspan="4" rowspan="2" class="color-red">Games</td>
+                    </tr>
+                    <tr>
+                        <th>19:00</th>
+                    </tr>
+                    <tr>
+                        <th>19:30</th>
+                        <td rowspan="2" class="color-blue">Makan <span>disediakan oleh panitia</span></td>
+                        <td rowspan="1" class="color-green">Break</td>
+                    </tr>
+                    <tr>
+                        <th>20:00</th>
+                        <td rowspan="1" class="color-orange">Performance <span>dari para senior dan angkatan baru</span></td>
+                    </tr>
+                    <tr>
+                        <th>20:30</th>
+                        <td rowspan="1" class="color-orange">Pengumuman Pemenang Ideathon 2019 <span>dan pemberian penghargaan</span></td>
+                        <td rowspan="1" class="color-orange">Penutup dan Doa</td>
+                    </tr>
+                    <tr>
+                        <th>21:00</th>
+                        <td colspan="4" rowspan="1" class="color-blue">Bazaar Merchandise</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .home-row {
+        padding: 40px;
+        margin: 0px;
+    }
+
+    .schedule {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        min-height: 100vh;
+        padding: 4rem 0;
+    }
+
+    table {
+        width: 100%;
+        max-width: 50rem;
+    }
+
+    table tr:nth-child(even) th {
+        color: #ccc;
+        font-weight: normal;
+    }
+
+    table th,
+    table td {
+        padding: 0.5rem 1rem;
+    }
+
+    table th {
+        font-weight: normal;
+        border-top: thin dotted #ccc;
+    }
+
+    table td {
+        font-size: 0.8rem;
+        font-weight: bold;
+        line-height: 1.4;
+        border-radius: 0.2rem;
+        transition: opacity 0.3s ease;
+    }
+
+    table td>span {
+        font-size: 0.8em;
+        font-weight: normal;
+        display: block;
+        width: 100%;
+    }
+
+    .color-orange {
+        background-color: #FFA726;
+    }
+
+    .color-green {
+        background-color: #9CCC65;
+    }
+
+    .color-red {
+        background-color: #FF8A65;
+    }
+
+    .color-blue {
+        background-color: #26C6DA;
+    }
+</style>
