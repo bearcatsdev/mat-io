@@ -1,18 +1,58 @@
-<div class="container-fluid">
+<div class="container">
     <div class="row home-row">
         <div class="col-sm">
             <div>
-                <p><h3>Hey, Binusian 23</h3></p>
-                <p><h1>You’re <strong class="bold">invited</strong> to</h1>
-                <h2>Binusian 2023 Welcoming Party</h2></p>
-                <p><a class="btn btn-primary" href="/reservation">Reserve Seat</a></p>
-            </div>
-        </div>
+                <p>
+                    <h1>Reservation</h1>
+                    Please make a reservation so that we can prepare your food and seat. This event is <b>completely
+                        free</b> for MAT students and the reservation can only be done in MAT I/O website. Please enter
+                    an valid email as the ticket will be sent to your email address.
+                </p>
+                <div style="padding-top: 25px;"></div>
+                <p>
+                    <form name="reservation-form" action="/reservation" method="post" onsubmit="return validateForm()">
+                        <div class="form-group">
+                            <label for="teamName">Your NIM</label>
+                            <div class="row">
+                                <div class="col-sm-11">
+                                    <input type="tel" maxlength="10" minlength="10" name="user_nim" class="form-control"
+                                        id="user_nim" placeholder="2301XXXXXX" required>
+                                    <small id="user_nim_error" class="text-danger" hidden>Field can't be empty</small>
+                                </div>
+                                <div class="col-sm-1">
+                                    <button class="btn btn-primary" onclick="verifyNim();">Verify</button>
+                                </div>
+                            </div>
+                        </div>
 
-        <div class="col-sm">
-            <p>
-                <img src="assets/img/logo_io.svg" alt="I/O Big" class="img-fluid">
-            </p>
+                        <div class="form-group">
+                            <label for="teamName">Your Name</label>
+                            <div class="row">
+                                <div class="col-sm-11">
+                                    <input type="text" name="user_name" class="form-control" id="user_name"
+                                        placeholder="Click Verify" readonly required>
+                                    <small id="user_name_error" class="text-danger" hidden>Please click verify</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="teamName">Your Email</label>
+                            <div class="row">
+                                <div class="col-sm-11">
+                                    <input type="text" name="user_name" class="form-control" id="user_name"
+                                        placeholder="somebody@provider.com" required>
+                                    <small id="user_name_error" class="text-danger" hidden>Please click verify</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="btn btn-primary" type="submit" value="Submit">
+                        </div>
+                    </form>
+                </p>
+            </div>
         </div>
     </div>
 </div>
@@ -23,3 +63,21 @@
         margin: 0px;
     }
 </style>
+
+<script>
+    function validateForm() {
+        var nim = document.forms["reservation-form"]["user_nim"].value;
+        var name = document.forms["reservation-form"]["user_name"].value;
+        if (name == "") {
+            document.getElementById('user_name_error').hidden = false;
+            return false;
+        } else if (nim == "") {
+            document.getElementById('user_nim_error').hidden = false;
+            return false;
+        }
+    }
+
+    function verifyNim() {
+        // placeholder
+    }
+</script>
