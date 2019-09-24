@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
     <div id="home-row" class="row home-row"></div>
     <div class="down-arrow">
         <a class="down-arrow-clickable" href="#about">
@@ -10,7 +10,7 @@
 
 <!-- About MAT I/O -->
 <a name="about"></a>
-<div class="container-fluid home-content" id="about-mat-io">
+<div class="container home-content" id="about-mat-io">
     <div class="row">
         <div class="col-sm">
             <img src="https://i.postimg.cc/5N3SSYjF/about-mat-io-1000x666.jpg" class="img-fluid main-image">
@@ -33,7 +33,7 @@
 </div>
 
 <!-- MAT Ideathon -->
-<div class="container-fluid home-content" id="about-mat-ideathon">
+<div class="container home-content" id="about-mat-ideathon">
     <div class="row" id="about-ideathon-row">
         <div class="col-sm">
             <p>
@@ -55,7 +55,7 @@
 </div>
 
 <!-- About MTC -->
-<div class="container-fluid home-content" id="about-mtc">
+<div class="container home-content" id="about-mtc">
     <div class="row">
         <div class="col-sm">
             <img src="https://i.postimg.cc/50btg0X6/about-mtc-1000x666.jpg" class="img-fluid main-image">
@@ -129,28 +129,16 @@
         height: 8px;
     }
 
-    img {
-        pointer-events: none;
-    }
-
     #about-mat-io {
-        background-color: #91D8E1;
         padding: var(--padding-normal);
     }
 
     #about-mat-ideathon {
-        background-color: #FFE479;
         padding: var(--padding-normal);
     }
 
     #about-mtc {
-        background-color: #FEC1C0;
         padding: var(--padding-normal);
-    }
-
-    .home-content {
-        margin-top: 20px !important;
-        margin-bottom: 20px !important;
     }
 
     /* Main Image */
@@ -210,7 +198,7 @@
                 '\n' +
                 '        <div class="col-sm">\n' +
                 '            <p>\n' +
-                '                <img src="assets/img/logo_io.svg" alt="I/O Big" class="img-fluid">\n' +
+                '                <img style="pointer-events: none" src="assets/img/logo_io.svg" alt="I/O Big" class="img-fluid">\n' +
                 '            </p>\n' +
                 '        </div>\n' +
                 ''
@@ -226,7 +214,7 @@
                 '                <h2 id="subtitle">Mobile Application and Technology<br>Binusian 2023 Welcoming Party</h2></p>\n' +
                 '                <div class="col-sm">\n' +
                 '                    <p>\n' +
-                '                        <img src="assets/img/logo_io.svg" alt="I/O Big" class="img-fluid">\n' +
+                '                        <img style="pointer-events: none" src="assets/img/logo_io.svg" alt="I/O Big" class="img-fluid">\n' +
                 '                    </p>\n' +
                 '                </div>\n' +
                 '                <section class="flex-container-row">\n' +
