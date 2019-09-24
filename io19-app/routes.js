@@ -18,6 +18,10 @@ module.exports = (app, apiUrl) => {
         res.sendFile(__dirname + '/public/index.html');
     });
 
+    app.get('/about', (req, res) => {
+        res.sendFile(__dirname + '/public/index.html');
+    });
+
     //app.route(API_PREFIX + '/reservation').post(api.newReservation);
 
     app.route(apiUrl + '/email').get(api.email);

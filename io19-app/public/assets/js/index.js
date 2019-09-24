@@ -33,6 +33,10 @@ switch (pathName) {
         includeDiv.load("includes/notfound.html");
         document.title = "Page Not Found - MAT I/O 2019";
         break;
+    case "/about":
+        includeDiv.load("includes/about.html");
+        document.title = "About - MAT I/O 2019";
+        break;
     default:
         includeDiv.load("includes/home.html");
         $("#navbar-item-home").addClass("active");
