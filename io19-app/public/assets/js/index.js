@@ -44,5 +44,15 @@ switch (pathName) {
 // Wait for window load
 $(window).on('load', function(){
     // Animate loader off screen
-    $(".se-pre-con").fadeOut("slow");;
+    $("#loader").fadeOut("slow");
+});
+
+jQuery.ajaxSetup({
+  beforeSend: function() {
+     $('#loader').show();
+  },
+  complete: function(){
+     $('#loader').fadeOut("slow");
+  },
+  success: function() {}
 });
