@@ -305,9 +305,15 @@ footer {
     }
 }
 
+/* Anchor */
 a.anchor {
     display: block;
     position: relative;
     top: -70px;
     visibility: hidden;
+}
+
+/* Navigation Bar Links Padding */
+.nav-link {
+    padding-right: 1.5rem !important;
 }
