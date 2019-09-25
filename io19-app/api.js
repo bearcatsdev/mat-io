@@ -29,6 +29,6 @@ exports.email = (req, res) => {
     });
 };
 
-exports.register = (req, res) => {
-    
+exports.newReservation = (req, res) => {
+
 };
