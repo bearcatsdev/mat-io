@@ -11,10 +11,10 @@ exports.email = (req, res) => {
     });
 
     const mailOptions = {
-        from: 'sambadi', // sender address
-        to: 'maipren@jimeil.com', // list of receivers
-        subject: 'Helo mai pren', // Subject line
-        html: '<h1>Wats ap mai pren</h1><p>hau ar yu? ar yu okei? Mi feri okei</p>'// plain text body
+        from: 'sambadi',
+        to: 'maipren@jimeil.com',
+        subject: 'Helo mai pren',
+        html: '<h1>Wats ap mai pren</h1><p>hau ar yu? ar yu okei? Mi feri okei</p>'
     };
 
     transporter.sendMail(mailOptions, function (err, info) {
@@ -27,4 +27,8 @@ exports.email = (req, res) => {
             console.log(info);
         }
     });
+};
+
+exports.register = (req, res) => {
+    
 };
