@@ -61,3 +61,4 @@ typings/
 .next
 
 # ignore db_config
+conn.js
