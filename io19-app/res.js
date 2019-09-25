@@ -24,3 +24,12 @@ exports.notfound = (res) => {
     res.status(404).json(data);
     res.end();
 };
+
+exports.unauthorized = (res, reason) => {
+    const data = {
+        'status': 401,
+        'error_message': reason
+    };
+    res.status(401).json(data);
+    res.end();
+};
