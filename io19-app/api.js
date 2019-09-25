@@ -2,34 +2,7 @@ const response = require('./res');
 const connection = require('./conn');
 const nodeMailer = require('nodemailer');
 const md5 = require('md5');
-
-exports.email = (req, res) => {
-    const transporter = nodeMailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: 'mai0email@jimeil.com',
-            pass: 'haoxianghaoxiang'
-        }
-    });
-
-    const mailOptions = {
-        from: 'sambadi',
-        to: 'maipren@jimeil.com',
-        subject: 'Helo mai pren',
-        html: '<h1>Wats ap mai pren</h1><p>hau ar yu? ar yu okei? Mi feri okei</p>'
-    };
-
-    transporter.sendMail(mailOptions, function (err, info) {
-        if(err) {
-            response.badrequest(res, 'Oops. Something went wrong.');
-            console.log(err);
-        }
-        else {
-            response.ok(res, {'message': 'ok'});
-            console.log(info);
-        }
-    });
-};
+const qrCode = require('qrcode');
 
 exports.newReservation = (req, res) => {
     const requestBody = req.body;
@@ -48,7 +21,45 @@ exports.newReservation = (req, res) => {
                     response.badrequest(res, 'Error occurred. (1)');
                     console.log(e1);
                 } else {
-                    response.ok(res, {'message': 'success'});
+                    qrCode.toDataURL(qrHash)
+                        .then(url => {
+                            console.log(url);
+                            const transporter = nodeMailer.createTransport({
+                                service: 'smtps://hello:huam@smtp.hutan.com/pool=true',
+                                auth: {
+                                    user: 'bremmmmm@hutan.com',
+                                    pass: 'banjirsampetenggelam'
+                                }
+                            });
+
+                            const mailOptions = {
+                                from: 'Hello My Pren',
+                                to: email,
+                                subject: 'Your barcode',
+                                html: '<h1>Hello World! <img alt="qr code" src="cid:reservation_qr" />',
+                                attachments: [{
+                                    filename: 'Your_QR.png',
+                                    content: url.split("base64,")[1],
+                                    encoding: 'base64',
+                                    cid: 'reservation_qr'
+                                }]
+                            };
+
+                            transporter.sendMail(mailOptions, function (err, info) {
+                                if(err) {
+                                    response.badrequest(res, 'Oops. Something went wrong.');
+                                    console.log(err);
+                                }
+                                else {
+                                    response.ok(res, {'message': 'Check your email for your reservation QR'});
+                                    console.log(info);
+                                }
+                            });
+                        })
+                        .catch(err => {
+                            response.badrequest(res, 'Error occurred on rendering qr');
+                            console.log(err);
+                        });
                 }
             });
         } else {

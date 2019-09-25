@@ -24,8 +24,6 @@ module.exports = (app) => {
 
     app.route(API_PREFIX + '/reservation').post(api.newReservation);
 
-    app.route(API_PREFIX + '/email').get(api.email);
-
     // page not found
     app.get('*', function (req, res) {
         res.status(404).redirect('/page-not-found');
