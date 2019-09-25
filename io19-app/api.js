@@ -30,5 +30,7 @@ exports.email = (req, res) => {
 };
 
 exports.newReservation = (req, res) => {
-
+    const requestBody = req.body;
+    const { hello, world } = requestBody;
+    response.ok(res, {'message': `${hello} ${world}`});
 };
