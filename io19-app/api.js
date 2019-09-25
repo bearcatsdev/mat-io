@@ -36,6 +36,7 @@ exports.newReservation = (req, res) => {
                                 from: 'Hello My Pren',
                                 to: email,
                                 subject: 'Your barcode',
+                                // TODO bikin format email
                                 html: '<h1>Hello World! <img alt="qr code" src="cid:reservation_qr" />',
                                 attachments: [{
                                     filename: 'Your_QR.png',
