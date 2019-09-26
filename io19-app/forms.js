@@ -39,10 +39,10 @@ exports.reservationForm = (req, res) => {
                         qrCode.toDataURL(qrHash)
                             .then(url => {
                                 const transporter = nodeMailer.createTransport({
-                                    service: credentials.getSmtpServer,
+                                    service: credentials.getSmtpServer(),
                                     auth: {
-                                        user: credentials.getUsername,
-                                        pass: credentials.getPassword
+                                        user: credentials.getUsername(),
+                                        pass: credentials.getPassword()
                                     }
                                 });
 
