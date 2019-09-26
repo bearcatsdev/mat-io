@@ -38,19 +38,23 @@ exports.reservationForm = (req, res) => {
                     } else {
                         qrCode.toDataURL(qrHash)
                             .then(url => {
-                                const transporter = nodeMailer.createTransport({
-                                    service: credentials.getSmtpServer(),
+                                var sendOptions = {
+                                    host: credentials.getSmtpServer(),
+                                    port: 465,
+                                    secure: true, // use SSL
                                     auth: {
                                         user: credentials.getUsername(),
                                         pass: credentials.getPassword()
                                     }
-                                });
+                                }    
+
+                                const transporter = nodeMailer.createTransport(sendOptions);
 
                                 const mailOptions = {
-                                    from: 'Hello My Pren',
+                                    from: "MTC Binus <" + credentials.getUsername() + ">",
                                     to: email,
-                                    subject: 'Your barcode',
-                                    // TODO bikin format email
+                                    bcc: credentials.getUsername(),
+                                    subject: '[MAT I/O] Your E-Ticket',
                                     html: '<h1>Hello World!<br /><img alt="qr code" src="cid:reservation_qr" />',
                                     attachments: [{
                                         filename: 'Your_QR.png',
