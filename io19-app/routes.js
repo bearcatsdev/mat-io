@@ -25,6 +25,8 @@ module.exports = (app) => {
 
     app.route('/reservation').post(forms.reservationForm);
 
+    app.route(API_PREFIX + '/fetchname').post(api.getName);
+
     app.route(API_PREFIX + '/reservation').post(api.newReservation);
 
     // page not found

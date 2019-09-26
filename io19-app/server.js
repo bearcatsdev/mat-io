@@ -3,7 +3,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const routes = require('./routes');
 const port = process.env.PORT || 3696;
-const random = require('./random')
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
