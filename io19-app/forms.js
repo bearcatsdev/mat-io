@@ -57,7 +57,7 @@ exports.reservationForm = (req, res) => {
                                     to: email,
                                     bcc: credentials.getUsername,
                                     subject: '[MAT I/O] Your E-Ticket',
-                                    html: emailGenerator.generate(name, dietary, "cid:reservation_qr"),
+                                    html: emailGenerator.generate(name, dietary, "cid:reservation_qr", qrHash.match(/.{1,4}/g).join('-')),
                                     attachments: [{
                                         filename: 'Your_QR.png',
                                         content: url.split("base64,")[1],
