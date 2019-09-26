@@ -10,7 +10,7 @@ exports.reservationForm = (req, res) => {
     const { nim, name, email, dietary } = requestBody;
     const qrHash = random.generate(16);
 
-    if (!req.recaptcha.error) {
+    if (!req.recaptcha.error && req.recaptcha.data.score >= 0.7) {
 
         // check if any field empty
         if (nim == null || name == null || email == null || dietary == null) {
@@ -120,7 +120,8 @@ exports.reservationForm = (req, res) => {
         });
 
     } else {
-        console.log(req.recaptcha.error);
+        console.log("captcha error: " + req.recaptcha.error);
+        console.log("captcha score: " + req.recaptcha.data.score);
         res.redirect("?error=Captcha error. Please try again.");
     }
 }
