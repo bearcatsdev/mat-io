@@ -5,7 +5,10 @@ exports.generate = (name, dietary, imgUrl, code) => {
     let result = fs.readFileSync('email-template.html', 'utf8')
             .replace("string_replace_name", name)
             .replace("string_replace_qrcode_src", 'cid:reservation_qr')
-            .replace("string_replace_food", dietary);
+            .replace("string_replace_food", dietary)
+            .replace("string_replace_code_text", code);
+
+    console.log(result);
 
     return result;
 }
