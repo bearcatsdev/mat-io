@@ -1,6 +1,9 @@
 const API_PREFIX = "/api/v1";
 const api = require('./api');
-const forms = require('./forms')
+const forms = require('./forms');
+const credentials = require('./credentials');
+const Recaptcha = require('express-recaptcha').RecaptchaV3;
+const recaptcha = new Recaptcha(credentials.getRecaptchaSiteKey(), credentials.getRecaptchaSecretKey());
 
 module.exports = (app) => {
     app.get('/', (req, res) => {
@@ -23,7 +26,7 @@ module.exports = (app) => {
         res.sendFile(__dirname + '/public/index.html');
     });
 
-    app.route('/reservation').post(forms.reservationForm);
+    app.route('/reservation').post(recaptcha.middleware.verify, forms.reservationForm);
 
     app.route(API_PREFIX + '/fetchname').post(api.getName);
 

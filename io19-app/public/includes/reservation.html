@@ -13,7 +13,8 @@
                 <p>
                     <h1>Reservation</h1>
                     Please make a reservation so that we can prepare your food and seat. This event is <b>completely
-                        free of charge</b> for MAT students and the reservation can only be done in MAT I/O website. Please enter
+                        free of charge</b> for MAT students and the reservation can only be done in MAT I/O website.
+                    Please enter
                     an valid email as the ticket will be sent to your email address.
                 </p>
                 <div style="padding-top: 25px;"></div>
@@ -25,7 +26,8 @@
                                 <div class="col-sm-11">
                                     <input type="tel" maxlength="10" minlength="10" name="nim" class="form-control"
                                         id="nim" placeholder="2301XXXXXX" onchange="nimChange();" required>
-                                    <small id="user_nim_error" class="text-danger" hidden>Tell us your name so we know who you are.</small>
+                                    <small id="user_nim_error" class="text-danger" hidden>Tell us your name so we know
+                                        who you are.</small>
                                 </div>
                                 <div class="col-sm-1">
                                     <button class="btn btn-primary" type="button" onclick="verifyNim();">Verify</button>
@@ -50,7 +52,8 @@
                                 <div class="col-sm-11">
                                     <input type="email" name="email" class="form-control" id="email"
                                         placeholder="somebody@provider.com" required>
-                                    <small id="user_email_error" class="text-danger" hidden>Please fill in email so we know where to send your ticket to.</small>
+                                    <small id="user_email_error" class="text-danger" hidden>Please fill in email so we
+                                        know where to send your ticket to.</small>
                                 </div>
                             </div>
                         </div>
@@ -58,13 +61,15 @@
                         <div class="form-group">
                             <label>Are you vegetarian?</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="dietary" id="dietary1" value="-" checked>
+                                <input class="form-check-input" type="radio" name="dietary" id="dietary1" value="-"
+                                    checked>
                                 <label class="form-check-label" for="dietary1">
                                     No, I eat everything
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="dietary" id="dietary2" value="Vegetarian">
+                                <input class="form-check-input" type="radio" name="dietary" id="dietary2"
+                                    value="Vegetarian">
                                 <label class="form-check-label" for="dietary2">
                                     Yes, I don't eat animal products
                                 </label>
@@ -72,6 +77,7 @@
                         </div>
 
                         <div class="form-group">
+                            <input type="hidden" name="g-recaptcha-response" id="recaptchaResponse">
                             <input class="btn btn-primary" type="submit" value="Submit">
                         </div>
                     </form>
@@ -87,6 +93,9 @@
         margin: 0px;
     }
 </style>
+
+<!-- Google Recaptcha -->
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=6LcOlboUAAAAAKxi43GWJDOPmHLKbrjc42upHdYi"></script>
 
 <script>
     let url = new URL(window.location.href);
@@ -120,7 +129,7 @@
         } else {
             document.getElementById('user_name_error').hidden = true;
         }
-        
+
         if (nim == "") {
             document.getElementById("user_nim_error").innerText = "Please fill in your NIM";
             document.getElementById('user_nim_error').hidden = false;
@@ -153,5 +162,15 @@
                     document.getElementById("user_nim_error").hidden = false;
                 }
             });
+    }
+
+    //recaptcha
+    function onloadCallback() {
+        grecaptcha.ready(function() {
+        grecaptcha.execute('6LcOlboUAAAAAKxi43GWJDOPmHLKbrjc42upHdYi', {action: 'reservation'}).then(function(token) {
+                let recaptchaResponse = document.getElementById('recaptchaResponse');
+                recaptchaResponse.value = token;
+            });
+        });
     }
 </script>
