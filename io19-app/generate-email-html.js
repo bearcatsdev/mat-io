@@ -7,8 +7,6 @@ exports.generate = (name, dietary, imgUrl, code) => {
             .replace("string_replace_qrcode_src", 'cid:reservation_qr')
             .replace("string_replace_food", dietary)
             .replace("string_replace_code_text", code);
-
-    console.log(result);
-
+            
     return result;
 }
