@@ -1,5 +1,6 @@
 const API_PREFIX = "/api/v1";
 const api = require('./api');
+const forms = require('./forms')
 
 module.exports = (app) => {
     app.get('/', (req, res) => {
@@ -21,6 +22,8 @@ module.exports = (app) => {
     app.get('/about', (req, res) => {
         res.sendFile(__dirname + '/public/index.html');
     });
+
+    app.route('/reservation').post(forms.reservationForm);
 
     app.route(API_PREFIX + '/reservation').post(api.newReservation);
 
