@@ -8,11 +8,17 @@ exports.reservationForm = (req, res) => {
     let userDietary = req.body.user_dietary;
     let qrHash = random.generate(16);
 
+    // check if any field empty
+    if (userNim === null || userName === null || userEmail === null || userDietary === null) {
+        res.redirect("?error=Please fill all the fields");
+        return;
+    }
+
     // check if user already registered
     const sql = 'SELECT * FROM `participant_tb` WHERE `nim` = ?';
     connection.query(sql, [userNim], (e, r) => {
         if (e) {
-            res.redirect("/?error=Unknown error");
+            res.redirect("?error=Unknown error");
             console.log(e);
 
         } else {
