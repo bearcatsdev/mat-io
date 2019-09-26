@@ -15,7 +15,8 @@
                     Please make a reservation so that we can prepare your food and seat. This event is <b>completely
                         free of charge</b> for MAT students and the reservation can only be done in MAT I/O website.
                     Please enter
-                    an valid email as the ticket will be sent to your email address.
+                    an valid email as the ticket will be sent to your email address. You'll also get SAT points if you
+                    attend this event.
                 </p>
                 <div style="padding-top: 25px;"></div>
                 <p>
@@ -95,7 +96,8 @@
 </style>
 
 <!-- Google Recaptcha -->
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=6LcOlboUAAAAAKxi43GWJDOPmHLKbrjc42upHdYi"></script>
+<script
+    src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=6LcOlboUAAAAAKxi43GWJDOPmHLKbrjc42upHdYi"></script>
 
 <script>
     let url = new URL(window.location.href);
@@ -166,8 +168,8 @@
 
     //recaptcha
     function onloadCallback() {
-        grecaptcha.ready(function() {
-        grecaptcha.execute('6LcOlboUAAAAAKxi43GWJDOPmHLKbrjc42upHdYi', {action: 'reservation'}).then(function(token) {
+        grecaptcha.ready(function () {
+            grecaptcha.execute('6LcOlboUAAAAAKxi43GWJDOPmHLKbrjc42upHdYi', { action: 'reservation' }).then(function (token) {
                 let recaptchaResponse = document.getElementById('recaptchaResponse');
                 recaptchaResponse.value = token;
             });
