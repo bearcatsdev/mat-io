@@ -38,6 +38,8 @@ exports.reservationForm = (req, res) => {
                     } else {
                         qrCode.toDataURL(qrHash)
                             .then(url => {
+                                const emailGenerator = require('./generate-email-html');
+
                                 var sendOptions = {
                                     host: credentials.getSmtpServer(),
                                     port: 465,
@@ -46,16 +48,16 @@ exports.reservationForm = (req, res) => {
                                         user: credentials.getUsername(),
                                         pass: credentials.getPassword()
                                     }
-                                }    
+                                }
 
                                 const transporter = nodeMailer.createTransport(sendOptions);
 
                                 const mailOptions = {
                                     from: "MTC Binus <" + credentials.getUsername() + ">",
                                     to: email,
-                                    bcc: credentials.getUsername(),
+                                    bcc: credentials.getUsername,
                                     subject: '[MAT I/O] Your E-Ticket',
-                                    html: '<h1>Hello World!<br /><img alt="qr code" src="cid:reservation_qr" />',
+                                    html: emailGenerator.generate(name, dietary, "cid:reservation_qr"),
                                     attachments: [{
                                         filename: 'Your_QR.png',
                                         content: url.split("base64,")[1],
@@ -65,8 +67,8 @@ exports.reservationForm = (req, res) => {
                                 };
 
                                 transporter.sendMail(mailOptions, function (err, info) {
-                                    if(err) {
-                                        res.redirect("?error=Email not sent");
+                                    if (err) {
+                                        res.redirect("?error=Email not sent. Please try again");
                                         console.log(err);
                                     }
                                     else {
