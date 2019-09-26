@@ -48,7 +48,7 @@ exports.reservationForm = (req, res) => {
                                 });
 
                                 const event = cal.createEvent({
-                                    start: new Date('Oct 04 2019 05:45:00 UTC'),
+                                    start: new Date('Oct 04 2019 07:45:00 UTC'),
                                     end: new Date('Oct 04 2019 14:00:00 UTC'),
                                     timestamp: new Date(),
                                     summary: 'MAT I/O 2019 - MAT 23 Welcoming Party',
