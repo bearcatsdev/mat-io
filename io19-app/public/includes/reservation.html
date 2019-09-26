@@ -12,7 +12,7 @@
                 <p>
                     <form name="reservation-form" action="/reservation" method="post" onsubmit="return validateForm()">
                         <div class="form-group">
-                            <label for="teamName">Your NIM</label>
+                            <label>Your NIM</label>
                             <div class="row">
                                 <div class="col-sm-11">
                                     <input type="tel" maxlength="10" minlength="10" name="user_nim" class="form-control"
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="teamName">Your Name</label>
+                            <label>Your Name</label>
                             <div class="row">
                                 <div class="col-sm-11">
                                     <input type="text" name="user_name" class="form-control" id="user_name"
@@ -37,12 +37,11 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="teamName">Your Email</label>
+                            <label>Your Email</label>
                             <div class="row">
                                 <div class="col-sm-11">
                                     <input type="text" name="user_name" class="form-control" id="user_name"
                                         placeholder="somebody@provider.com" required>
-                                    <small id="user_name_error" class="text-danger" hidden>Please click verify</small>
                                 </div>
                             </div>
                         </div>
@@ -66,8 +65,8 @@
 
 <script>
     function validateForm() {
-        var nim = document.forms["reservation-form"]["user_nim"].value;
-        var name = document.forms["reservation-form"]["user_name"].text;
+        const nim = document.forms["reservation-form"]["user_nim"].value;
+        const name = document.forms["reservation-form"]["user_name"].text;
         if (name == "") {
             document.getElementById('user_name_error').hidden = false;
             return false;
