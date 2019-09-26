@@ -67,7 +67,7 @@
 <script>
     function validateForm() {
         var nim = document.forms["reservation-form"]["user_nim"].value;
-        var name = document.forms["reservation-form"]["user_name"].value;
+        var name = document.forms["reservation-form"]["user_name"].text;
         if (name == "") {
             document.getElementById('user_name_error').hidden = false;
             return false;

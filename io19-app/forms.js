@@ -16,8 +16,8 @@ exports.reservationForm = (req, res) => {
             console.log(e);
 
         } else {
-            if (r.length >= 0) {
-                res.redirect("/?error=User already registered");
+            if (r.length > 0) {
+                res.redirect("?error=User already registered");
                 console.log("User already registered: " + userNim);
 
             } else if (r.length === 0) {
@@ -25,13 +25,13 @@ exports.reservationForm = (req, res) => {
                 const sql1 = 'INSERT INTO `participant_tb` (`name`, `nim`, `email`, `dietary`, `checked_in`, `taken_food`, `qr_hash`) VALUES (?, ?, ?, ?, 0, 0, ?)';
                 connection.query(sql1, [userName, userNim, userEmail, userDietary, qrHash], (e1, r1) => {
                     if (e1) {
-                        res.redirect("/?error=Unknown error");
+                        res.redirect("?error=Unknown error");
                         console.log(e1);
 
                     } else {
                         // TODO SEND EMAIL
 
-                        res.redirect("/?success=1&qrhash=" + qrHash);
+                        res.redirect("?success=1&qrhash=" + qrHash);
                     }
                 });
 
