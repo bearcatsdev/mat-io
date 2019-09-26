@@ -9,7 +9,7 @@ exports.reservationForm = (req, res) => {
     let qrHash = random.generate(16);
 
     // check if any field empty
-    if (userNim === null || userName === null || userEmail === null || userDietary === null) {
+    if (userNim == null || userName == null || userEmail == null || userDietary == null) {
         res.redirect("?error=Please fill all the fields");
         return;
     }
