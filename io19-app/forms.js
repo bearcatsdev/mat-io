@@ -1,22 +1,22 @@
 const connection = require('./conn');
 const random = require('./random');
+const qrCode = require('qrcode');
+const nodeMailer = require('nodemailer');
 
 exports.reservationForm = (req, res) => {
-    let userNim = req.body.user_nim;
-    let userName = req.body.user_name;
-    let userEmail = req.body.user_email;
-    let userDietary = req.body.user_dietary;
-    let qrHash = random.generate(16);
+    const requestBody = req.body;
+    const { name, nim, email, dietary } = requestBody;
+    const qrHash = random.generate(16);
 
     // check if any field empty
-    if (userNim == null || userName == null || userEmail == null || userDietary == null) {
+    if (nim == null || name == null || email == null || dietary == null) {
         res.redirect("?error=Please fill all the fields");
         return;
     }
 
     // check if user already registered
     const sql = 'SELECT * FROM `participant_tb` WHERE `nim` = ?';
-    connection.query(sql, [userNim], (e, r) => {
+    connection.query(sql, [nim], (e, r) => {
         if (e) {
             res.redirect("?error=Unknown error");
             console.log(e);
@@ -24,20 +24,56 @@ exports.reservationForm = (req, res) => {
         } else {
             if (r.length > 0) {
                 res.redirect("?error=User already registered");
-                console.log("User already registered: " + userNim);
+                console.log("User already registered: " + nim);
 
             } else if (r.length === 0) {
                 // insert into database
                 const sql1 = 'INSERT INTO `participant_tb` (`name`, `nim`, `email`, `dietary`, `checked_in`, `taken_food`, `qr_hash`) VALUES (?, ?, ?, ?, 0, 0, ?)';
-                connection.query(sql1, [userName, userNim, userEmail, userDietary, qrHash], (e1, r1) => {
+                connection.query(sql1, [name, nim, email, dietary, qrHash], (e1, r1) => {
                     if (e1) {
                         res.redirect("?error=Unknown error");
                         console.log(e1);
 
                     } else {
-                        // TODO SEND EMAIL
+                        qrCode.toDataURL(qrHash)
+                            .then(url => {
+                                const transporter = nodeMailer.createTransport({
+                                    service: 'smtps://hello:huam@smtp.hutan.com/pool=true',
+                                    auth: {
+                                        user: 'bremmmmm@hutan.com@',
+                                        pass: 'banjirsampetenggelam'
+                                    }
+                                });
 
-                        res.redirect("?success=1&qrhash=" + qrHash);
+                                const mailOptions = {
+                                    from: 'Hello My Pren',
+                                    to: email,
+                                    subject: 'Your barcode',
+                                    // TODO bikin format email
+                                    html: '<h1>Hello World!<br /><img alt="qr code" src="cid:reservation_qr" />',
+                                    attachments: [{
+                                        filename: 'Your_QR.png',
+                                        content: url.split("base64,")[1],
+                                        encoding: 'base64',
+                                        cid: 'reservation_qr'
+                                    }]
+                                };
+
+                                transporter.sendMail(mailOptions, function (err, info) {
+                                    if(err) {
+                                        res.redirect("?error=Email not sent");
+                                        console.log(err);
+                                    }
+                                    else {
+                                        res.redirect("?success=1&qrhash=" + qrHash);
+                                        console.log(info);
+                                    }
+                                });
+                            })
+                            .catch(err => {
+                                res.redirect("?error=QR generate failed");
+                                console.log(err);
+                            });
                     }
                 });
 
