@@ -2,10 +2,11 @@ const connection = require('./conn');
 const random = require('./random');
 const qrCode = require('qrcode');
 const nodeMailer = require('nodemailer');
+const credentials = require('./credentials');
 
 exports.reservationForm = (req, res) => {
     const requestBody = req.body;
-    const { name, nim, email, dietary } = requestBody;
+    const { nim, name, email, dietary } = requestBody;
     const qrHash = random.generate(16);
 
     // check if any field empty
@@ -38,10 +39,10 @@ exports.reservationForm = (req, res) => {
                         qrCode.toDataURL(qrHash)
                             .then(url => {
                                 const transporter = nodeMailer.createTransport({
-                                    service: 'smtps://hello:huam@smtp.hutan.com/pool=true',
+                                    service: credentials.getSmtpServer,
                                     auth: {
-                                        user: 'bremmmmm@hutan.com@',
-                                        pass: 'banjirsampetenggelam'
+                                        user: credentials.getUsername,
+                                        pass: credentials.getPassword
                                     }
                                 });
 

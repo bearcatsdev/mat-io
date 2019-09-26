@@ -3,9 +3,17 @@
         <div class="col-sm">
             <div>
                 <p>
+                    <div class="alert alert-success" role="alert" id="message-success" hidden>
+                        Reservation success! — please check your email for your ticket.
+                    </div>
+                    <div class="alert alert-danger" role="alert" id="message-danger" hidden>
+                        An error occured! — <span id="error-message"></span>
+                    </div>
+                </p>
+                <p>
                     <h1>Reservation</h1>
                     Please make a reservation so that we can prepare your food and seat. This event is <b>completely
-                        free</b> for MAT students and the reservation can only be done in MAT I/O website. Please enter
+                        free of charge</b> for MAT students and the reservation can only be done in MAT I/O website. Please enter
                     an valid email as the ticket will be sent to your email address.
                 </p>
                 <div style="padding-top: 25px;"></div>
@@ -15,9 +23,9 @@
                             <label>Your NIM</label>
                             <div class="row">
                                 <div class="col-sm-11">
-                                    <input type="tel" maxlength="10" minlength="10" name="user_nim" class="form-control"
-                                        id="user_nim" placeholder="2301XXXXXX" required>
-                                    <small id="user_nim_error" class="text-danger" hidden>Field can't be empty</small>
+                                    <input type="tel" maxlength="10" minlength="10" name="nim" class="form-control"
+                                        id="nim" placeholder="2301XXXXXX" onchange="nimChange();" required>
+                                    <small id="user_nim_error" class="text-danger" hidden>Tell us your name so we know who you are.</small>
                                 </div>
                                 <div class="col-sm-1">
                                     <button class="btn btn-primary" type="button" onclick="verifyNim();">Verify</button>
@@ -29,7 +37,7 @@
                             <label>Your Name</label>
                             <div class="row">
                                 <div class="col-sm-11">
-                                    <input type="text" name="user_name" class="form-control" id="user_name"
+                                    <input type="text" name="name" class="form-control" id="name"
                                         placeholder="Click Verify" readonly required>
                                     <small id="user_name_error" class="text-danger" hidden>Please click verify</small>
                                 </div>
@@ -40,9 +48,26 @@
                             <label>Your Email</label>
                             <div class="row">
                                 <div class="col-sm-11">
-                                    <input type="text" name="user_name" class="form-control" id="user_email"
+                                    <input type="email" name="email" class="form-control" id="email"
                                         placeholder="somebody@provider.com" required>
+                                    <small id="user_email_error" class="text-danger" hidden>Please fill in email so we know where to send your ticket to.</small>
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Are you vegetarian?</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="dietary" id="dietary1" value="-" checked>
+                                <label class="form-check-label" for="dietary1">
+                                    No, I eat everything
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="dietary" id="dietary2" value="Vegetarian">
+                                <label class="form-check-label" for="dietary2">
+                                    Yes, I don't eat animal products
+                                </label>
                             </div>
                         </div>
 
@@ -64,27 +89,68 @@
 </style>
 
 <script>
+    let url = new URL(window.location.href);
+    let error = url.searchParams.get("error");
+    let success = url.searchParams.get("success");
+
+    if (success != null) {
+        let successAlert = document.getElementById("message-success");
+        if (success == 1) successAlert.hidden = false;
+    }
+
+    if (error != null) {
+        let errorAlert = document.getElementById("message-danger");
+        document.getElementById("error-message").innerText = error;
+        errorAlert.hidden = false;
+    }
+
+    function nimChange() {
+        document.getElementById("name").value = "";
+    }
+
     function validateForm() {
-        const nim = document.forms["reservation-form"]["user_nim"].value;
-        const name = document.forms["reservation-form"]["user_name"].text;
+        let valid = true;
+        const nim = document.forms["reservation-form"]["nim"].value;
+        const name = document.forms["reservation-form"]["name"].value;
+        const email = document.forms["reservation-form"]["email"].value;
+
         if (name == "") {
             document.getElementById('user_name_error').hidden = false;
-            return false;
-        } else if (nim == "") {
+            valid = false;
+        } else {
+            document.getElementById('user_name_error').hidden = true;
+        }
+        
+        if (nim == "") {
+            document.getElementById("user_nim_error").innerText = "Please fill in your NIM";
             document.getElementById('user_nim_error').hidden = false;
+            valid = false;
+        } else {
+            document.getElementById('user_nim_error').hidden = true;
+        }
+
+        if (email == "") {
+            document.getElementById('user_email_error').hidden = false;
+            valid = false;
+        } else {
+            document.getElementById('user_email_error').hidden = true;
+        }
+
+        if (!valid) {
             return false;
         }
     }
 
     function verifyNim() {
         // placeholder
-        $.post('/api/v1/fetchname', { nim: document.forms["reservation-form"]["user_nim"].value })
+        $.post('/api/v1/fetchname', { nim: document.forms["reservation-form"]["nim"].value })
             .done(data => {
                 if (data.response.name) {
-                    $('#user_name').val(data.response.name);
+                    $('#name').val(data.response.name);
                 } else {
                     // TODO nim invalid
-                    alert('nim invalid');
+                    document.getElementById("user_nim_error").innerText = "Your NIM is invalid";
+                    document.getElementById("user_nim_error").hidden = false;
                 }
             });
     }
