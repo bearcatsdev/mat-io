@@ -3,6 +3,7 @@ const random = require('./random');
 const qrCode = require('qrcode');
 const nodeMailer = require('nodemailer');
 const credentials = require('./credentials');
+const ical = require('ical-generator');
 
 exports.reservationForm = (req, res) => {
     const requestBody = req.body;
@@ -38,6 +39,28 @@ exports.reservationForm = (req, res) => {
                     } else {
                         qrCode.toDataURL(qrHash)
                             .then(url => {
+                                // generate ical
+                                const cal = ical({
+                                    domain: 'mtcbin.us',
+                                    prodId: {company: 'mtcbin.us', product: 'MAT I/O 2019'},
+                                    name: 'MAT I/O 2019',
+                                    timezone: 'Asia/Jakarta'
+                                });
+
+                                const event = cal.createEvent({
+                                    start: new Date(2019, 10, 4, 14, 45),
+                                    end: new Date(2019, 10, 4, 21, 00),
+                                    timestamp: new Date(),
+                                    summary: 'MAT I/O 2019 - MAT 23 Welcoming Party',
+                                    organizer: 'BINUS Mobile Tech Community <contact@mtcbin.us>',
+                                    geo: {
+                                        lat: -6.1939096,
+                                        lon: 106.7859456
+                                    },
+                                    location: "BINUS University Kijang Campus"                                    
+                                });
+
+                                // send email
                                 const emailGenerator = require('./generate-email-html');
 
                                 var sendOptions = {
@@ -55,15 +78,21 @@ exports.reservationForm = (req, res) => {
                                 const mailOptions = {
                                     from: "MTC Binus <" + credentials.getUsername() + ">",
                                     to: email,
-                                    bcc: credentials.getUsername,
+                                    cc: credentials.getUsername(),
                                     subject: '[MAT I/O] Your E-Ticket',
-                                    html: emailGenerator.generate(name, dietary, "cid:reservation_qr", qrHash.match(/.{1,4}/g).join('-')),
+                                    html: emailGenerator.generateHtml(name, dietary, "cid:reservation_qr", qrHash.match(/.{1,4}/g).join(' ')),
+                                    text: emailGenerator.generateText(name, dietary, qrHash.match(/.{1,4}/g).join(' ')),
                                     attachments: [{
                                         filename: 'Your_QR.png',
                                         content: url.split("base64,")[1],
                                         encoding: 'base64',
                                         cid: 'reservation_qr'
-                                    }]
+                                    }],
+                                    icalEvent: {
+                                        filename: 'invitation.ics',
+                                        method: 'request',
+                                        content: cal.toString()
+                                    }
                                 };
 
                                 transporter.sendMail(mailOptions, function (err, info) {
