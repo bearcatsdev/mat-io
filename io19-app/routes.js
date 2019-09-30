@@ -30,7 +30,7 @@ module.exports = (app) => {
 
     app.route(API_PREFIX + '/fetchname').post(api.getName);
 
-    app.route(API_PREFIX + '/reservation').post(api.newReservation);
+    app.route(API_PREFIX + '/checkin').post(api.checkIn);
 
     // page not found
     app.get('*', function (req, res) {
