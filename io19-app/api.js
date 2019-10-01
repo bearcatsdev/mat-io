@@ -41,6 +41,7 @@ exports.checkIn = (req, res) => {
                     } else {
                         const result = r[0];
                         result.message = `Checked in`;
+                        result.checked_in = 1;
                         response.ok(res, result);
                     }
                 });
@@ -78,6 +79,7 @@ exports.claimFood = (req, res) => {
                     } else {
                         const result = r[0];
                         result.message = `Enjoy the food`;
+                        result.taken_food = 1;
                         response.ok(res, result);
                     }
                 });
