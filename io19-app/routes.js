@@ -32,6 +32,8 @@ module.exports = (app) => {
 
     app.route(API_PREFIX + '/checkin').post(api.checkIn);
 
+    app.route(API_PREFIX + '/claimfood').post(api.claimFood);
+
     // page not found
     app.get('*', function (req, res) {
         res.status(404).redirect('/page-not-found');
