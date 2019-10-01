@@ -40,13 +40,13 @@ exports.checkIn = (req, res) => {
                         console.log(e1);
                     } else {
                         const result = r[0];
-                        result.message = `${result.name} (${result.nim}) is now checked in.`
+                        result.message = `Checked in`;
                         response.ok(res, result);
                     }
                 });
             } else {
                 const result = r[0];
-                result.message = `${result.name} (${result.nim}) has checked in before.`
+                result.message = `Checked in`;
                 response.ok(res, result);
             }
         } else {
