@@ -22,7 +22,7 @@ exports.getName = (req, res) => {
 exports.checkIn = (req, res) => {
     const { qr_code : qrCode } = req.body;
     const sql = [
-        "SELECT `name`, `nim`, `email`, `dietary`, `checked_in`, `taken_food` FROM `participant_tb` WHERE `qr_hash` = ?",
+        "SELECT `name`, `nim`, `email`, `dietary`, `checked_in`, `taken_food`, `checked_in_time`, `taken_food_time` FROM `participant_tb` WHERE `qr_hash` = ?",
         "UPDATE `participant_tb` SET `checked_in` = 1, `checked_in_time` = CURRENT_TIMESTAMP WHERE `qr_hash` = ?"
     ];
 
