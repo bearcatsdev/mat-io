@@ -23,7 +23,7 @@ exports.checkIn = (req, res) => {
     const { qr_code : qrCode } = req.body;
     const sql = [
         "SELECT `name`, `nim`, `email`, `dietary`, `checked_in`, `taken_food` FROM `participant_tb` WHERE `qr_hash` = ?",
-        "UPDATE `participant_tb` SET `checked_in` = 1 WHERE `qr_hash` = ?"
+        "UPDATE `participant_tb` SET `checked_in` = 1, `checked_in_time` = CURRENT_TIMESTAMP WHERE `qr_hash` = ?"
     ];
 
     connection.query(sql[0], [qrCode], (e, r) => {
@@ -39,10 +39,16 @@ exports.checkIn = (req, res) => {
                         response.badrequest(res, 'An error occurred. (1)');
                         console.log(e1);
                     } else {
-                        const result = r[0];
-                        result.message = `Checked in`;
-                        result.checked_in = 1;
-                        response.ok(res, result);
+                        connection.query(sql[0], [qrCode], (e2, r2) => {
+                            if (e2) {
+                                response.badrequest(res, 'An error occurred. (2)');
+                                console.log(e2);
+                            } else {
+                                const result = r2[0];
+                                result.message = "Checked in";
+                                response.ok(res, result);
+                            }
+                        });
                     }
                 });
             } else {
@@ -60,8 +66,8 @@ exports.claimFood = (req, res) => {
     const { qr_code : qrCode } = req.body;
 
     const sql = [
-        "SELECT `name`, `nim`, `email`, `dietary`, `checked_in`, `taken_food` FROM `participant_tb` WHERE `qr_hash` = ?",
-        "UPDATE `participant_tb` SET `taken_food` = 1 WHERE `qr_hash` = ?"
+        "SELECT `name`, `nim`, `email`, `dietary`, `checked_in`, `taken_food`, `checked_in_time`, `taken_food_time` FROM `participant_tb` WHERE `qr_hash` = ?",
+        "UPDATE `participant_tb` SET `taken_food` = 1, `taken_food_time` = CURRENT_TIMESTAMP WHERE `qr_hash` = ?",
     ];
 
     connection.query(sql[0], [qrCode], (e, r) => {
@@ -77,10 +83,16 @@ exports.claimFood = (req, res) => {
                         response.badrequest(res, 'An error occurred. (1)');
                         console.log(e1);
                     } else {
-                        const result = r[0];
-                        result.message = `Enjoy the food`;
-                        result.taken_food = 1;
-                        response.ok(res, result);
+                        connection.query(sql[0], [qrCode], (e2, r2) => {
+                            if (e2) {
+                                response.badrequest(res, 'An error occurred. (2)');
+                                console.log(e2);
+                            } else {
+                                const result = r2[0];
+                                result.message = "Enjoy your food";
+                                response.ok(res, result);
+                            }
+                        });
                     }
                 });
             } else {
