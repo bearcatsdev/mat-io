@@ -22,9 +22,34 @@ exports.getName = (req, res) => {
 exports.checkIn = (req, res) => {
     const { qr_code : qrCode } = req.body;
     const sql = [
-        "SELECT `name`, `nim`, `email`, `dietary`, `checked_in`, `taken_food`, `checked_in_time`, `taken_food_time` FROM `participant_tb` WHERE `qr_hash` = ?",
+        "SELECT `name`, `nim`, `email`, `dietary`, `checked_in`, `taken_food`, `checked_in_time`, `taken_food_time`, `team` FROM `participant_tb` WHERE `qr_hash` = ?",
         "UPDATE `participant_tb` SET `checked_in` = 1, `checked_in_time` = CURRENT_TIMESTAMP WHERE `qr_hash` = ?"
     ];
+    const decideTeam = (team) => {
+        if (team === 0) {
+            return "(Panitia)";
+        } else if (team === 1) {
+            return "(Team Ungu)";
+        } else if (team === 2) {
+            return "(Team Hijau Muda)";
+        } else if (team === 3) {
+            return "(Team Hijau Tua)";
+        } else if (team === 4) {
+            return "(Team Emas)";
+        } else if (team === 5) {
+            return "(Team Kuning)";
+        } else if (team === 6) {
+            return "(Team Oren)";
+        } else if (team === 7) {
+            return "(Team Merah)";
+        } else if (team === 8) {
+            return "(Team Pink)";
+        } else if (team === 9) {
+            return "(Team Hitam)";
+        } else if (team === 10) {
+            return "(Team Putih)";
+        }
+    };
 
     connection.query(sql[0], [qrCode], (e, r) => {
         if (e) {
@@ -45,7 +70,8 @@ exports.checkIn = (req, res) => {
                                 console.log(e2);
                             } else {
                                 const result = r2[0];
-                                result.message = "Checked in";
+                                result.message = `Checked in ${decideTeam(result.team)}`;
+                                delete result.team;
                                 response.ok(res, result);
                             }
                         });
@@ -53,7 +79,8 @@ exports.checkIn = (req, res) => {
                 });
             } else {
                 const result = r[0];
-                result.message = `Checked in`;
+                result.message = `Checked in ${decideTeam(result.team)}`;
+                delete result.team;
                 response.ok(res, result);
             }
         } else {
