@@ -17,7 +17,7 @@
     "ical-generator": "^1.8.1",
     "md5": "^2.2.1",
     "mysql": "^2.17.1",
-    "nodemailer": "^6.3.0",
+    "nodemailer": "^6.4.16",
     "qrcode": "^1.4.2",
     "random": "^2.1.1",
     "typed.js": "^2.0.10"
